@@ -10,6 +10,9 @@
             <RouterLink :to="{ name: 'locations' }" class="nav-button">Locations</RouterLink>
           </li>
           <li>
+            <RouterLink :to="{ name: 'breweries' }" class="nav-button">Breweries</RouterLink>
+          </li>
+          <li>
             <RouterLink :to="{ name: 'index' }" class="nav-button">Logout</RouterLink>
           </li>
         </ul>
