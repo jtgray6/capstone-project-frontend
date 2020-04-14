@@ -1,5 +1,5 @@
 import { authHeader } from '../helpers/auth-header';
-const apiURL = 'http://localhost:8000'
+const apiURL = 'http://127.0.0.1:8000'
 
 export const userService = {
     signup,
@@ -18,6 +18,7 @@ function login(username, password) {
     return fetch(`${apiURL}/api/token/obtain/`, requestOptions)
         .then(handleResponse)
         .then(user => {
+            console.log(user)
             // login successful if there's a jwt token in the response
             if (user.access) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
