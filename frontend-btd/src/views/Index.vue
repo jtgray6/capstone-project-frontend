@@ -53,7 +53,6 @@ export default {
 </script>
 
 <style lang="scss">
-    @import "../styles/colors";
 
         .login-page {
             display: flex;
@@ -69,10 +68,6 @@ export default {
             height: 220px;
             box-shadow: 0 5px 15px black;
             padding: 1rem;
-        }
-
-        .login-title {
-            color: $test-color;
         }
 
 </style>

@@ -7,10 +7,10 @@
             <RouterLink :to="{ name: 'home' }" class="nav-button">Home</RouterLink>
           </li>
           <li>
-            <RouterLink :to="{ name: 'locations' }" class="nav-button">Locations</RouterLink>
+            <RouterLink :to="{ name: 'breweries' }" class="nav-button">Breweries</RouterLink>
           </li>
           <li>
-            <RouterLink :to="{ name: 'breweries' }" class="nav-button">Breweries</RouterLink>
+            <RouterLink :to="{ name: 'locations' }" class="nav-button">Locations</RouterLink>
           </li>
           <li>
             <RouterLink :to="{ name: 'index' }" class="nav-button">Logout</RouterLink>
@@ -27,6 +27,8 @@ export default {
 </script>
 
 <style lang="scss">
+    @import "../styles/typography";
+    @import "../styles/colors";
 
     ul, .header {
         display: flex;
@@ -36,6 +38,13 @@ export default {
 
     .title {
         margin-left: 16px;
+        font-family: $primary-font;
+        font-size: 2.6rem;
+    }
+
+    .nav-button {
+      font-family: $primary-font;
+      font-size: 1.6rem;
     }
 
     ul {
@@ -52,12 +61,14 @@ export default {
     }
 
     .nav-button, h1 {
-        color: yellow;
+        color: $secondary-color-6;
     }
     
     .header {
-        background-color: darkblue;
+        background-color: $black;
         margin: 0;
+        position: fixed;
+        width: 100vw;
     }
 
 </style>
