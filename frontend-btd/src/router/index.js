@@ -6,6 +6,7 @@ import SignUp from "@/views/SignUp"
 import Home from "@/views/Home"
 import Breweries from "@/views/Breweries"
 import Locations from "@/views/Locations"
+import Beers from "@/views/Beers"
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,10 @@ const routes = [{
   name: "breweries",
   path: "/breweries",
   component: Breweries,
+},{
+  name: "beers",
+  path: "/beers",
+  component: Beers,
 }]
 
 const router = new VueRouter({
