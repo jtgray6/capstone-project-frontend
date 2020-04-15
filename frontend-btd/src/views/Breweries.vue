@@ -15,29 +15,39 @@
                     </template>
                     <div class="brewery-card">
                         <img class="brewery-image" :src="brewery.image_url" :alt="brewery.name"/>
-                        <div class="left-side">
-                            <h4 class="brewery-location">Located in {{brewery.location}}</h4>
-                            <GmapMap
-                                :center="{lat: parseFloat(brewery.latitude), lng: parseFloat(brewery.longitude)}"
-                                :zoom="14"
-                                map-type-id="roadmap"
-                                style="width: 260px; height: 260px"
-                            >
-                                 <GmapMarker
-                                    :position="{lat: parseFloat(brewery.latitude), lng: parseFloat(brewery.longitude)}"
-                                />
-                            </GmapMap>
-                            <a :href="brewery.website_url">Go to Website</a>
+                        <div class="brewery-bottom">
+                            <div class="left-side">
+                                <h4 class="brewery-location">Located in {{brewery.location}}</h4>
+                                <GmapMap
+                                    :center="{lat: parseFloat(brewery.latitude), lng: parseFloat(brewery.longitude)}"
+                                    :zoom="14"
+                                    map-type-id="roadmap"
+                                    style="width: 260px; height: 260px"
+                                >
+                                    <GmapMarker
+                                        :position="{lat: parseFloat(brewery.latitude), lng: parseFloat(brewery.longitude)}"
+                                    />
+                                </GmapMap>
+                                <a :href="brewery.website_url" class="website-link">Go to Website</a>
+                            </div>
+                            <div class="right-side">
+                                <h4 class="brewery-location">Beer Releases</h4>
+                                <BeerList :beers="brewery.beers"/>
+                            </div>
                         </div>
                     </div>
                 </el-collapse-item>
             </el-collapse> 
         </main>
+        <Footer />
     </div>
 </template>
 
 <script>
 import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import BeerList from '@/components/BeerList'
+
 export default {
     data(){
         return {
@@ -53,7 +63,9 @@ export default {
         }
     },
     components: {
-        Header
+        Header,
+        Footer,
+        BeerList
     }
 }
 </script>
@@ -62,19 +74,46 @@ export default {
     @import "../styles/typography";
 
     .brewery-location {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
+    }
+
+    .website-link {
+        margin-top: 1rem;
+        text-decoration: none;
+        color: black;
+        padding: 4px;
+        box-shadow: 0 5px 8px black;
+        border-radius: 5px;
+        text-align: center;
+        width: 200px;
     }
 
     .brewery-page-title {
         font-size: 2.6rem;
     }
 
+    .brewery-bottom {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100vw;
+    }
+
+    .left-side {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .right-side {
+        width: 260px;
+        text-align: center;
+    }
     .brewery-page {
         display: flex;
         flex-direction: column;
         align-items: center;
         font-family: $secondary-font;
-        padding-top: 8rem;
+        padding-top: 10rem;
+        z-index: 0;
     }
     .brewery-logo {
         height: 6rem;

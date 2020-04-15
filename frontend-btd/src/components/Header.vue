@@ -1,13 +1,13 @@
 <template>
     <div class="header">
-        <h1 class="title">Brew Tour Denver</h1>
+        <RouterLink :to="{ name: 'home' }" ><h1 class="title">Brew Tour Denver</h1></RouterLink>
         <nav>
         <ul>
           <li>
-            <RouterLink :to="{ name: 'home' }" class="nav-button">Home</RouterLink>
+            <RouterLink :to="{ name: 'breweries' }" class="nav-button">Breweries</RouterLink>
           </li>
           <li>
-            <RouterLink :to="{ name: 'breweries' }" class="nav-button">Breweries</RouterLink>
+            <RouterLink :to="{ name: 'beers' }" class="nav-button">Beers</RouterLink>
           </li>
           <li>
             <RouterLink :to="{ name: 'locations' }" class="nav-button">Locations</RouterLink>
@@ -69,6 +69,7 @@ export default {
         margin: 0;
         position: fixed;
         width: 100vw;
+        z-index: 1;
     }
 
 </style>

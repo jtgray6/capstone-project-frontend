@@ -14,10 +14,15 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     breweries: [],
+    beers: []
   },
   mutations: {
     setBreweries(state, breweries){
       state.breweries = breweries
+      return state
+    },
+    setBeers(state, beers){
+      state.beers = beers
       return state
     }
   },
@@ -32,11 +37,23 @@ export default new Vuex.Store({
       })
         .then(response => response.json())
         .then(breweries => {
-          
-          console.log(breweries)
           commit("setBreweries", breweries)
         })
         
+    },
+    fetchBeers({commit}){
+      fetch(`${apiURL}/beers`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `JWT ${tokens.access}`
+        }
+      })
+        .then(response => response.json())
+        .then(beers => {
+          console.log(beers)
+          commit("setBeers", beers)
+        })
     }
   },
   modules: {
