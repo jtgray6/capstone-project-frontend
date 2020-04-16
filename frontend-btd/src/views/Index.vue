@@ -1,34 +1,43 @@
 <template>
-    <div class="login-page">
-        <form @submit.prevent="handleSubmit">
-            <h3>Please Log In Below</h3>
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" v-model="username" name="username" class="form-control" :class="{ 'is-invalid': submitted && !username }" />
-                <div v-show="submitted && !username" class="invalid-feedback">Username is required</div>
-            </div>
-            <div class="form-group">
-                <label htmlFor="password">Password</label>
-                <input type="password" v-model="password" name="password" class="form-control" :class="{ 'is-invalid': submitted && !password }" />
-                <div v-show="submitted && !password" class="invalid-feedback">Password is required</div>
-            </div>
-            <div class="form-group">
-                <button class="btn btn-primary" :disabled="loggingIn">Login</button>
-                <img v-show="loggingIn" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-            </div>
-            <RouterLink :to="{ name: 'sign-up' }"><button>Sign Up</button></RouterLink>
-        </form>
+    <div>
+        <div class="login-page">
+            <h1 class="title">Brew Tour Denver</h1>
+            <form @submit.prevent="handleSubmit">
+                <h3 class="login-form-title">Please Log In Below</h3>
+                <div class="input-container">
+                    <div class="form-group">
+                        <input type="text" v-model="username" placeholder="Username" name="username" class="login-input" :class="{ 'is-invalid': submitted && !username }" />
+                        <div v-show="submitted && !username" class="invalid-feedback">Username is required</div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" v-model="password" placeholder="Password" name="password" class="login-input" :class="{ 'is-invalid': submitted && !password }" />
+                        <div v-show="submitted && !password" class="invalid-feedback">Password is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button class="login-button" :disabled="loggingIn">Login</button>
+                    <img v-show="loggingIn" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                </div>
+                <RouterLink :to="{ name: 'sign-up' }"><button class="login-button">Sign Up</button></RouterLink>
+            </form>
+        </div>
+            <Footer />
     </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer';
 export default {
+
     data () {
         return {
             username: '',
             password: '',
             submitted: false
         }
+    },
+    components: {
+        Footer
     },
     computed: {
         loggingIn () {
@@ -53,21 +62,66 @@ export default {
 </script>
 
 <style lang="scss">
+        @import "../styles/typography";
+        @import "../styles/colors";
 
         .login-page {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: hsl(0, 11%, 17%);
+        }
+
+        .login-form-title {
+            font-family: $primary-font;
+            font-size: 1.6rem;
+            color: $secondary-color-6;
+            margin: 0;
         }
 
         form {
+            font-family: $secondary-font;
             display: flex;
             flex-direction: column;
-            width: 200px;
-            height: 220px;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 360px;
             box-shadow: 0 5px 15px black;
+            border-radius: 6px;
             padding: 1rem;
+            background-color: black;
+            color: white;
+        }
+        .input-container {
+            margin-top: 6px;
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .login-input {
+            font-size: 1rem;
+            width: 180px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+        }
+
+        .login-button {
+            font-size: 0.8rem;
+            padding: 6px;
+            width: 180px;
+            margin: 8px 0;
+            background-color: black;
+            border-radius: 6px;
+            color: $secondary-color-6;
+            border-color: $secondary-color-6;
+            &:hover {
+                background-color: hsl(0, 11%, 17%);
+            }
+            
         }
 
 </style>
