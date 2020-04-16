@@ -1,6 +1,6 @@
 <template>
     <div class="footer">
-        <p class="signature">Created by Jeremy Gray</p>
+        <p class="signature">Made with ♡ by Jeremy Gray</p>
     </div>
 </template>
 

@@ -82,10 +82,14 @@ export default {
         text-decoration: none;
         color: black;
         padding: 4px;
-        box-shadow: 0 5px 8px black;
+        box-shadow: 0 1px 3px black;
         border-radius: 5px;
         text-align: center;
         width: 200px;
+        &:hover {
+            background-color: black;
+            color: white;
+        }
     }
 
     .brewery-page-title {
@@ -95,7 +99,7 @@ export default {
     .brewery-bottom {
         display: flex;
         justify-content: space-evenly;
-        width: 100vw;
+        width: 900px;
     }
 
     .left-side {
@@ -112,7 +116,7 @@ export default {
         flex-direction: column;
         align-items: center;
         font-family: $secondary-font;
-        padding-top: 10rem;
+        padding-top: 8rem;
         z-index: 0;
     }
     .brewery-logo {
@@ -128,18 +132,22 @@ export default {
     .brewery-header {
         display: flex;
         align-items: center;
+        justify-content: center;
+        width: 100%;
     }
     .brewery-image {
-        width: 1000px;
+        width: 800px;
     }
     .brewery-card {
         display: flex;
         flex-direction: column;
         align-items: center;
+        width: fit-content;
     }
     .brewery-container {
         display: flex;
         flex-direction: column;
+        width: fit-content;
     }
     .el-collapse-item__header {
         // display: flex;
