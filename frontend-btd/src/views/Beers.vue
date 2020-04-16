@@ -2,11 +2,12 @@
     <div>
         <Header />
         <div class="beer-page">
+            <h2 class="brewery-page-title">BEERS</h2>
             <div class="beer-container">
                 <BeerFlipCard v-for="beer in beers" :key="beer.id" class="beer-card">
                     <template slot="front">
                         <div class="beer-card-front" :style="{'background-image': `url(${beer.image_url})`}">
-                            <h3 style="display:none;">{{beer.name}}</h3>
+                            <h3 class="beer-card-name">{{beer.name}}</h3>
                         </div>
                     </template>
                     <template slot="back">
@@ -44,11 +45,15 @@ export default {
 </script>
 
 <style lang="scss">
+    @import "../styles/typography";
+
     .beer-page {
         padding-top: 8rem;
-        height: 100vh;
+        height: fit-content;
         display: flex;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-family: $secondary-font;
     }
 
     .beer-card {
@@ -58,8 +63,15 @@ export default {
         width: 300px;
     }
 
+    .beer-card-name {
+        margin: 0;
+    }
+
     .beer-container {
-        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        width: 1350px;
+        justify-content: flex-start;
     }
     .beer-card-front {
         height: 300px;
@@ -69,6 +81,14 @@ export default {
             background-color: rgba(255, 255, 255, 0.6);
             background-blend-mode: lighten;
         }
+    }
+
+    .beer-card-front .beer-card-name {
+        display: none;
+    }
+
+    .beer-card-front:hover .beer-card-name {
+        display: block;
     }
 
     .beer-card-back {
