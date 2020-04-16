@@ -8,7 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyBlBbuCm0P0rqCou8kmyRcqIcC_1m0Mok0',
+    key: 'AIzaSyCW-IEdQvvsDUNE7eLTNRTYNj8zstryYXw',
     libraries: 'places',
   },
 })
