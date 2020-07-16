@@ -33,4 +33,4 @@ Clone and fork this repository. Run npm install. Navigate to the frontend-btd fo
 Feel free to contribute to this project by forking and cloning the repo.
 
 ### Feature Walkthrough Video
-Will be added shortly. Check back soon. Thanks for checking out my project!
+https://youtu.be/ttAuCjTaduk
